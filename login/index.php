@@ -1,6 +1,6 @@
 <?php
 session_start();
-$config = include('config.php');
+$config = include('../config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $submitted_password = $_POST['password'];
   $original_password_hash = $config['password'];
@@ -26,7 +26,7 @@ if (!isset($_SESSION['token'])) :
 
   <body>
     <h1>パスワード入力</h1>
-    <form method="post" action="login.php">
+    <form method="post" action="./">
       <label for="password">パスワード</label>
       <input type="password" name="password" required><br><br>
       <button type="submit">送信</button>

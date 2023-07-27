@@ -2,7 +2,7 @@
 session_start();
 $config = include('config.php');
 if (!isset($_SESSION['token'])) {
-  header('Location: login.php');
+  header('Location: /login');
   exit();
 }
 $entries = include('api/listfiles.php');
@@ -29,10 +29,10 @@ $entries = include('api/listfiles.php');
     <!-- Main Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
       <h2 class="w3-wide"><?php echo $config['title']; ?></h2>
-      <p><a href="/logout.php">ログアウト</a></p>
+      <p><a href="/logout">ログアウト</a></p>
       <div class="w3-padding-64">
         <?php foreach ($entries as $entry) : ?>
-          <a href="view.php?s=<?php echo $entry['filename']; ?>" class="w3-button w3-block w3-hover-dark-grey w3-padding-16">
+          <a href="view/?s=<?php echo $entry['filename']; ?>" class="w3-button w3-block w3-hover-dark-grey w3-padding-16">
             <?php echo $entry['title']; ?>
           </a>
         <?php endforeach; ?>
