@@ -23,5 +23,12 @@ foreach (glob($config['path'] . '*.txt') as $entry) {
     'datetime' => $datetime,
   ];
 }
-rsort($entries);
+function cmp($a, $b)
+{
+  if ($a['datetime'] == $b['datetime']) {
+    return 0;
+  }
+  return ($a['datetime'] > $b['datetime']) ? -1 : 1;
+}
+usort($entries, "cmp");
 return $entries;
